@@ -1,7 +1,7 @@
 ﻿param($n=15)
 Import-Module PSGraph
 
-$fileName = (Split-Path $PSCommandPath -Leaf).Replace(".ps1","")
+$fileName = (Split-Path $PSCommandPath -Leaf).Replace(".ps1","").Replace("n-c", "$n-c")
 
 class Connection {
     [string] $start
