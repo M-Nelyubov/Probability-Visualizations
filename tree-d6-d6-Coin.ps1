@@ -1,5 +1,6 @@
 ﻿Import-Module PSGraph
 
+$fileName = (Split-Path $PSCommandPath -Leaf).Replace(".ps1","")
 
 class Connection {
     [string] $start
@@ -48,4 +49,4 @@ graph d -Attributes @{dpi=200; fontsize=20; compound=$true} {
     $edges | foreach {
         edge $_.start $_.end -Attributes @{label=$_.label}
     }
-} | Export-PSGraph -ShowGraph -LayoutEngine Hierarchical -DestinationPath "$PSScriptRoot\images\render-$((Get-Date).toString('yyyy-MM-dd_hh-mm_ss')).png"
+} | Export-PSGraph -ShowGraph -LayoutEngine Hierarchical -DestinationPath "$PSScriptRoot\images\$fileName-$((Get-Date).toString('yyyy-MM-dd_hh-mm_ss')).png"
